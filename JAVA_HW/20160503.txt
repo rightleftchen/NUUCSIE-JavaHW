@@ -1,0 +1,132 @@
+
+import java.util.Scanner;
+import java.util.Random;
+public class Q1 {
+	public static int[] a = new int[10];
+    public static int[] b = new int[10];
+    public static int[] c = new int[10];
+    public static int[] d = new int[10];
+    public static int[] TEMP = new int[10];
+	public static void main(String args[]){
+		Scanner input = new Scanner(System.in);
+		for(int count=0;count<10;++count)// initial TEMP
+			TEMP[count]=0;
+		
+	    setABCD();
+	    System.out.print("Set(A):");
+	    Print(a);
+	    System.out.print("Set(B):");
+	    Print(b);
+	    System.out.print("Set(C):");
+	    Print(c);
+	    System.out.print("Set(D):");
+	    Print(d);
+	    System.out.print("Set(A) and Set(B)");
+	    X_and_Y(a,b);//print Set(A) and Set(B),Set(A) or Set(B) 
+	    System.out.print("Set(A) or Set(B)");
+	    X_or_Y(a,b);
+	    System.out.print("Set(C) and Set(D)");
+	    X_and_Y(c,d);//print Set(C) and Set(D),Set(C) or Set(D)
+	    System.out.print("Set(C) or Set(D)");
+	    X_or_Y(c,d);
+	    System.out.print("Set(B) and Set(C)");
+	    X_and_Y(b,c);//print Set(B) and Set(C),Set(B) or Set(C)
+	    System.out.print("Set(B) or Set(C)");
+	    X_or_Y(b,c);
+	    
+	    
+	}
+	public static void X_and_Y(int[] X,int[] Y)
+	{
+        //////////////print Set(X) and Set(Y)//////////////////
+		for(int count=0; count<10; ++count)
+		{
+			for(int count2=0; count2<10; ++count2)
+			{
+				if(X[count]==Y[count2])// find the same number in Set(A) and Set(B)
+				{
+					TEMP[count]=X[count];
+				}// end if
+			}//end for_count2
+		}// end for_count
+		for(int count=0; count<10; ++count)
+		{
+			for(int count2=count+1; count2<10; ++count2)
+			{
+				if(TEMP[count]==TEMP[count2])
+				TEMP[count2]=0;
+			}
+		}
+		System.out.print("={");
+		for(int count=0; count<10; ++count){
+			if(TEMP[count]!=0)
+			System.out.print(" "+TEMP[count]+" ");
+		}
+		System.out.println("}");
+		
+	}// end A_and_B
+
+	
+
+	
+	public static void X_or_Y(int[] I, int[] J)
+	{//////////////print Set(X) or Set(Y)//////////////////
+		int[] temp1 = new int[20];
+		for(int i=0; i<20; ++i)
+		{
+			temp1[i]=0;
+		}
+		for(int i=0; i<10; ++i)
+		{
+			temp1[i]=I[i];
+		}
+		for(int i=10; i<20; ++i)
+		{
+			temp1[i]=J[i%10];
+		}
+		for(int count=0; count<20; ++count) // check the same number don't show again
+		{
+			for(int count2=count+1; count2<20; ++count2)
+			{
+				if(temp1[count]==temp1[count2])
+					temp1[count2]=0;
+			}
+		}
+		for(int count=0; count<10; ++count) // design the zero
+		{
+			for(int count2=0; count2<20; ++count2)
+			{
+				if(TEMP[count]==temp1[count2])
+					temp1[count2]=0;
+			}
+		}	
+		
+		System.out.print("={");
+		for(int count=0; count<20; ++count){
+			if(temp1[count]!=0)   // if not zero, print the number 
+			System.out.print(" "+temp1[count]+" ");
+		}
+		System.out.println("}");
+	}
+	
+	public static void Print(int[] temp)
+	{
+		
+		for(int count=0; count<10; ++count)
+		{
+			System.out.print(" "+temp[count]+" ");
+		}
+		System.out.println("");
+	}	
+	public static void setABCD()   // make the random number
+	{
+		Random randnumbers = new Random();
+		for(int count=0; count<10; ++count)
+		{
+			a[count] = 1+randnumbers.nextInt(9);
+			b[count] = 1+randnumbers.nextInt(9);
+			c[count] = 1+randnumbers.nextInt(9);
+			d[count] = 1+randnumbers.nextInt(9);
+		}
+	}
+}

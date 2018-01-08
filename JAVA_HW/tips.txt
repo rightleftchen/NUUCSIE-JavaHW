@@ -1,0 +1,3 @@
+int S=(int)(Math.random()*10+1);
+Arrays.sort(arg0);
+import java.util.*;

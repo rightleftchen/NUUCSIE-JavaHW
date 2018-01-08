@@ -1,0 +1,41 @@
+import java.util.Scanner;
+import java.util.Random;
+public class test {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+      Scanner input = new Scanner(System.in);
+      Random randnumbers = new Random();
+      int rand_num[] = new int[99];
+      for(int count=0; count<50; ++count)
+      {
+    	rand_num[count]=count+1;      // number 1~50
+      }  
+      System.out.print("Please input amount of Lottery:");
+      int amount = input.nextInt();
+      for(int count=1; count<=amount; ++count)
+      {
+    	  System.out.print(count+". Lottery number :"); // print the lottery numbers
+    	  for(int count2=0; count2<7; ++count2)
+    	  {  int temp=randnumbers.nextInt(50);
+    		   if(count2==6)
+    		  {
+    			  if(rand_num[temp]!=0)
+    				 System.out.println(" ("+rand_num[temp]+") "); // special number
+    			  else --count2;
+        		 break;
+    		  }
+    		 
+    		  if(rand_num[temp]!=0)
+    		  {
+    			  System.out.print(" "+rand_num[temp]+" ");// ensure the numbers don't show twice
+    			  rand_num[temp]=0;
+    		  }
+    		  else --count2;
+    		 
+    	  }
+      }   
+      System.out.print("Total money="+amount*50);
+	}
+
+}

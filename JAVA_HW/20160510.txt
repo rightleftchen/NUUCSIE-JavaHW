@@ -1,0 +1,86 @@
+import java.util.*;
+public class test {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		Scanner input = new Scanner(System.in);
+		System.out.println("///////////////////DEMO1//////////////////////////");
+		/////////////////////////DEMO1///////////////////////////////////
+		System.out.print("Enter the Hours: ");
+		double hours=input.nextInt(); // input the hours
+		double salary=0; // initial salary
+		if(hours<=60)
+		{
+			salary = hours*75;
+			System.out.println("The salary="+salary);
+		}
+		else if(hours>60 && hours<=75)
+		{
+			hours = hours-60;
+			salary = 60*75+hours*75*1.25;
+			System.out.println("The salary="+salary);
+		}
+		else //hours>75
+		{
+			hours = hours-75;
+			salary = 60*75+15*75*1.25+hours*75*1.75;
+			System.out.println("The salary="+salary);
+		}
+		
+		System.out.println("///////////////////DEMO2//////////////////////////");
+		///////////////////DEMO2//////////////////////////
+		System.out.println("Option:");
+		System.out.println("  (a)Family Usage");
+		System.out.println("  (b)Industry Usage");
+		System.out.println("  (c)Business Usage");
+		System.out.print("Choose Eletric Type: ");
+		char eletric_type=(char)input.next().charAt(0); // eletric type
+		double eletric_fee=0; // eletric fee
+		double degree;  //eletric degree
+		if(eletric_type=='a') // Family Usage
+		{
+			System.out.print("Enter the degree of eletricity:");
+			degree = input.nextDouble();  // input eletricity degree
+			if(degree<=100)
+			{
+				eletric_fee = degree*2.5;
+				System.out.print("The fee of eletricity = "+eletric_fee);
+			}
+			else if(degree>100 && degree<=300)
+			{
+				degree = degree-100;
+				eletric_fee = 100*2.5+degree*3.3;
+				System.out.print("The fee of eletricity = "+eletric_fee);
+			}
+			else //degree>300
+			{
+				degree = degree-300;
+				eletric_fee = 100*2.5+200*3.3+degree*4.2;
+				System.out.print("The fee of eletricity = "+eletric_fee);
+			}
+		}
+		else if(eletric_type=='b') // Industry Usage
+		{
+			System.out.print("Enter the degree of eletricity:");
+			degree = input.nextDouble();  // input eletricity degree
+			eletric_fee = 150+degree*1.9;
+			System.out.print("The fee of eletricity = "+eletric_fee);
+		}
+		else // eletric_type=='c' // Business Usage
+		{
+			System.out.print("Enter the degree of eletricity:");
+			degree = input.nextDouble();  // input eletricity degree
+			if(degree<=300)
+			{
+				eletric_fee = degree*6;
+				System.out.print("The fee of eletricity = "+eletric_fee);
+			}
+			else //degree>3008
+			{
+				degree = degree-300;
+				eletric_fee = 300*6+degree*6.8;
+				System.out.print("The fee of eletricity = "+eletric_fee);
+			}
+		}		
+	}
+}
